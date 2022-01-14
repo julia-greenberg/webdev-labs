@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8"><title>Top Restaurant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Restaurant</title>
+</head>
+<body>
+    <!-- to modularize the code - will have a header section -->
+    {% include 'includes/header.html' %}
+
+    <main>
+        <!-- <p>Data: {{ restaurant }}</p> -->
+        <!-- can also do restaurant.get('image_url'), then use it as source -->
+        {% for rest in restaurants %}
+            <section>
+                <h2>{{ rest.get('name') }}</h2>
+                <img alt='Restaurant Image' src={{rest.image_url}}>
+                <p>{{rest.display_address}}</p>
+                <table>
+                    <tr>
+                        <td>Price:</td>
+                        <td><strong>{{rest.price}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Rating:</td>
+                        <td><strong>{{rest.rating}}</strong></td>
+                    </tr>
+                    <tr>
+                        <td># Reviews:</td>
+                        <td><strong>{{rest.review_count}}</strong></td>
+                    </tr>
+                </table>
+            </section>
+        {% endfor %}
+    </main>
+</body>
+</html>
+
